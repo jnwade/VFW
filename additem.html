@@ -1,41 +1,40 @@
 <!doctype html>
     <!--Project: Web App Part 1 :: Jonathan Wade :: 1207-->
 
-<html lang="en">
+<html lang="en" />
     <head>
+    	 <!--Import our CSS Styles-->
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+
         <meta charset="utf-8">
         <meta name="description" content="Add Songs" />
         <meta name="author" content="Jonathan Wade"/>
-        <meta name="keyword" content="set list creation, vfw, mobile developement"
+        <meta name="keyword" content="set list creation, vfw, mobile development" />
         <meta name="viewport" content="user-scalable=no, width=device-width" />
         <meta name="viewport" content="target-densitydpi=device-dpi" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" /> <!--Old School Way-->
-        <meta name="robots" content="index, follow">
+        <meta name="robots" content="index, follow" />
         
-        <link rel="stylesheet" href="css/styles.css?v=1.0">
-        <!--[if lt IE 9]>
+        <!--[if lt IE 9]-->
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+       
        <!--Document Title-->
-        <title>Add Songs</title>
-        
-        <!--Import our CSS Styles-->
-        <link href="css/styles.css" rel="stylesheet" type="text/css" />
-        
-        <!--Call our JavaScript file-->
-        <script src="js/main.js" type="text/javascript"></script>
+        <title>Add Songs</title>    
     </head>
     
     <body>
+        <!--Begin Form-->
         <h1>My Set Lists</h1>
-            <form action="#" method="post">
+            <form action="#" method="post" />
                 <fieldset>
                     <legend><strong>Add a Song</strong></legend>
                     <ul>
-                        <li>    
+                        <li>
+                            <!--Genre drop down selector-->
                             <label for="genre">Genre:</label>
-                                <select id="genre">
+                                <select id="genre" />
                                 <option value="0" selected="selected"></option>
                                 <option value="disco">Disco</option>
                                 <option value="funk">Funk</option>
@@ -45,43 +44,56 @@
                                 <option value="90sRock">90s Rock</option>
                             </select>
                         </li>
+                       
+                        <li> 
+                        	<!--Song Name Input-->
+                        	<label for="title">Song Title:</label> 
+                        	<input type="text" name="title" id="title" value="" /> 
+                        </li>                       
                         <li>
-                            <label for="title">Song Title:</label>
-                            <input type="text" name="title" id="title" value="" />
-                        </li>
+                       		<!--Artist Name Input-->
+                        	<label for="artist">Artist:</label> 
+                        	<input type="text" name="artist" id="artist" value="" /> 
+                        </li>  
+                        <li> 
+                        	<!--Popularity Slider-->
+                        	<label for="rating">Tempo:</label> 
+                        	<input type="range" min="50" max="200" name="rating" value="100" onchange="showValue(this.value)" /> 
+                        	<span id="range">100</span> 
+                        </li>                       
                         <li>
-                            <label for="artist">Artist:</label>
-                            <input type="text" name="artist" id="artist" value="" />
-                        </li>
-                        <li>
-                            <label for="rating">Song Popularity:</label>
-                            <input type="range" min="1" max="10" name="rating" type="range" />
-                        </li>
-                        <li>
-                            Need to Learn?
+                            <!--Do we need to learn this song-->
+                            <label for="learn">Need to Learn?</label>
                             <label><input type="radio" name="learn" value="yes" /> Yes</label>
                             <label><input type="radio" name="learn" value="no" /> No</label>    
                         </li>
                         <li>
+                            <!--Are you singing this song-->
                             <label for="sing">Sing?</label>
                             <input type="checkbox" name="sing" id="sing" />
                         </li>
                         <li>
-                            <label for="tempo">Tempo:</label>
-                            <input type="text" name="tempo" id="tempo" value="" />
+                            <!--Tempo Input-->
+                            <label for="key">Key:</label>
+                            <input type="text" name="key" id="key" value="" />
                         </li>
                         <li>
+                            <!--Special Notes and Reminders-->
                             <label for="notes">Notes:</label>
                             <textarea name="notes" cols="40" rows="6" ></textarea>
                         </li>
                         <li>
+                            <!--Hidden Field-->
                             <input type="hidden" value="true" />
                         </li>
                     </ul>
                  </fieldset>
+                    <!--Submission and Reset Buttons-->
                     <input type="submit" name="submitbutton" id="submitbutton" value="Add Song" />
                     <input type="reset" name="resetbutton" id="resetbutton" value="Clear" />            
                 </form>
+            <!--Call our JavaScript file-->
+        <script src="js/main.js" type="text/javascript"></script>
     </body>
 </html>
 
