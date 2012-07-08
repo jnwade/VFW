@@ -4,6 +4,7 @@
 <html lang="en" />
     <head>
     	 <!--Import our CSS Styles-->
+        <link href='http://fonts.googleapis.com/css?family=Federant' rel='stylesheet' type='text/css'>
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
 
         <meta charset="utf-8">
@@ -13,12 +14,12 @@
         <meta name="viewport" content="user-scalable=no, width=device-width" />
         <meta name="viewport" content="target-densitydpi=device-dpi" />
         <meta name="HandheldFriendly" content="True" />
-        <meta name="MobileOptimized" content="320" /> <!--Old School Way-->
+        <!-- <meta name="MobileOptimized" content="320" /> --> <!--Old School Way-->
         <meta name="robots" content="index, follow" />
         
         <!--[if lt IE 9]-->
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <!--[endif]-->
        
        <!--Document Title-->
         <title>Add Songs</title>    
@@ -26,14 +27,13 @@
     
     <body>
         <!--Begin Form-->
-        <h1>My Set Lists</h1>
+        <h1>Set-Lister</h1>
             <form action="#" method="post" />
-                <fieldset>
-                    <legend><strong>Add a Song</strong></legend>
+                  <legend><strong>Add a Song</strong></legend>
                     <ul>
                         <li>
                             <!--Genre drop down selector-->
-                            <label for="genre">Genre:</label>
+                            <label for="genre"><strong>Genre:</strong></label>
                                 <select id="genre" />
                                 <option value="0" selected="selected"></option>
                                 <option value="disco">Disco</option>
@@ -45,52 +45,43 @@
                             </select>
                         </li>
                        
+                        <li> <label for="title"><strong>Song Title:</strong></label> <input type="text" name="title" id="title" value="" /> </li>  <!--Song Name Input-->                     
+                        <li> <label for="artist"><strong>Artist:</strong></label> <input type="text" name="artist" id="artist" value="" /> </li>  <!--Artist Name Input-->
+                        
                         <li> 
-                        	<!--Song Name Input-->
-                        	<label for="title">Song Title:</label> 
-                        	<input type="text" name="title" id="title" value="" /> 
-                        </li>                       
-                        <li>
-                       		<!--Artist Name Input-->
-                        	<label for="artist">Artist:</label> 
-                        	<input type="text" name="artist" id="artist" value="" /> 
-                        </li>  
-                        <li> 
-                        	<!--Popularity Slider-->
-                        	<label for="rating">Tempo:</label> 
+                        	<label for="rating"><strong>Tempo:</strong></label> 
                         	<input type="range" min="50" max="200" name="rating" value="100" onchange="showValue(this.value)" /> 
                         	<span id="range">100</span> 
-                        </li>                       
-                        <li>
-                            <!--Do we need to learn this song-->
-                            <label for="learn">Need to Learn?</label>
-                            <label><input type="radio" name="learn" value="yes" /> Yes</label>
-                            <label><input type="radio" name="learn" value="no" /> No</label>    
-                        </li>
-                        <li>
-                            <!--Are you singing this song-->
-                            <label for="sing">Sing?</label>
-                            <input type="checkbox" name="sing" id="sing" />
-                        </li>
-                        <li>
-                            <!--Tempo Input-->
-                            <label for="key">Key:</label>
-                            <input type="text" name="key" id="key" value="" />
-                        </li>
-                        <li>
-                            <!--Special Notes and Reminders-->
-                            <label for="notes">Notes:</label>
-                            <textarea name="notes" cols="40" rows="6" ></textarea>
-                        </li>
-                        <li>
-                            <!--Hidden Field-->
-                            <input type="hidden" value="true" />
-                        </li>
+                        </li> <!--Tempo Slider-->
+                        
+                        <li> <label for="learn"><strong>Need to Learn?</strong></label> <label> <input type="radio" name="learn" value="yes" /> Yes</label> <label> <input type="radio" name="learn" value="no" /> No</label> </li> <!--Do we need to learn this song-->
+                        <li> <label for="sing"><strong>Sing?</strong></label> <input type="checkbox" name="sing" id="sing" /> </li> <!--Are you singing this song-->
+                        <li> <!-- Key Signature -->
+                        	<label for="key"><strong>Key:</strong></label> 
+                        	<input type="text" list="keys" name="key" id="key" value="" /> 
+                        	<datalist id="keys">
+							  <option value="A">
+							  <option value="Bb">
+							  <option value="B">
+							  <option value="C">
+							  <option value="C#">
+							  <option value="D">
+							  <option value="Eb">
+							  <option value="E">
+							  <option value="F">
+							  <option value="F#">
+							  <option value="G">
+							  <option value="G#">
+							</datalist>
+                        </li> <!--Tempo Input-->
+                        <li> <label for="notes"><strong>Notes:</strong></label> <textarea name="notes" cols="40" rows="6" ></textarea> </li><!--Special Notes and Reminders-->
+                        <li> <input type="hidden" value="true" /> </li> <!--Hidden Field-->
                     </ul>
-                 </fieldset>
                     <!--Submission and Reset Buttons-->
-                    <input type="submit" name="submitbutton" id="submitbutton" value="Add Song" />
-                    <input type="reset" name="resetbutton" id="resetbutton" value="Clear" />            
+                    <div>
+	                    <input type="submit" name="submitbutton" id="submitbutton" value="Add Song" />
+	                    <input type="reset" name="resetbutton" id="resetbutton" value="Clear" /> 
+                    </div>           
                 </form>
             <!--Call our JavaScript file-->
         <script src="js/main.js" type="text/javascript"></script>
