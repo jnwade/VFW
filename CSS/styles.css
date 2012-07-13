@@ -7,8 +7,11 @@
  
 */
 
-	
 
+
+#viewList, #clearList, #addNew {
+	display: inline;
+}
 
 
 body {
@@ -90,7 +93,11 @@ div#headerDiv{
 	background: -webkit-linear-gradient(top,  rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%); /* Chrome10+,Safari5.1+ */
 }
 
-
+div#item {
+	color: #474242;
+	letter-spacing: .05em;
+	
+}
 
 
 span#range {

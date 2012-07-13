@@ -53,7 +53,8 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
  	
- 	function toggleControl(n) {
+ 	function toggleControls(n) {
+ 	console.log($("mainForm"));
 	 	switch(n){
 		 	case "on":
 		 		$("mainForm").style.display = "none";
@@ -96,7 +97,7 @@ window.addEventListener("DOMContentLoaded", function(){
  	}
  	
  	function getData(){
- 		toggleControl("on");
+ 		toggleControls("on");
 	 	//Write data from localStorage to the Browser
 	 	var makeDiv = document.createElement("div");
 	 	makeDiv.setAttribute("id", "item"); //temp changed "items" to "item" for debugging
@@ -121,6 +122,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		 	}	
 	 	}	
  	}
+ 	
+/*
+ 	function clearLocal () {
+ 		if(localStorage.length === 0) {
+	 		alert("There is nnothing to clear!")
+ 		}else{
+	 		localStorage.clear();
+	 		alert("All songs have been deleted.");
+	 		window.location.reload();
+	 		return false;
+ 		}
+ 	 }
+*/
 
  	//Variable Defaults
  	var songGenre = ["Pick A Genre!", "Disco", "Funk", "Classic Rock", "80s alt", "Hair Metal", "90s Rock" ],
@@ -133,8 +147,8 @@ window.addEventListener("DOMContentLoaded", function(){
  	// Set Link & Submit Click Events
  	var viewList = $("viewList");
  	viewList.addEventListener("click", getData);
- 	/*
-var clearList = $('clearList');
+/*
+ 	var clearList = $('clearList');
  	clearList.addEventListener("click", clearLocal);
 */
  	var addSong = $("submitButton");
