@@ -49,9 +49,31 @@ window.addEventListener("DOMContentLoaded", function(){
 		if($("sing").checked){
 			singValue = $("sing").value;
 		}else{
-			singValue = "No"
+			singValue = "No";
 		}
 	}
+ 	
+ 	function toggleControl(n) {
+	 	switch(n){
+		 	case "on":
+		 		$("mainForm").style.display = "none";
+		 		$("clearList").style.display = "inline";
+		 		$("viewList").style.display = "none";
+		 		$("addNew").style.display = "inline";
+		 		break;
+		 	case "off":
+		 		$("mainForm").style.display = "block";
+		 		$("clearList").style.display = "inline";
+		 		$("viewList").style.display = "inline";
+		 		$("addNew").style.display = "none";
+		 		$("item").style.display = "none";
+		 		break;
+		 	default:
+		 		return false;
+		 		
+	 	}
+ 	}
+ 	
  	
 	function storeData(){
 		var id 					= Math.floor(Math.random()*1000001);
@@ -74,12 +96,14 @@ window.addEventListener("DOMContentLoaded", function(){
  	}
  	
  	function getData(){
+ 		toggleControl("on");
 	 	//Write data from localStorage to the Browser
 	 	var makeDiv = document.createElement("div");
 	 	makeDiv.setAttribute("id", "item"); //temp changed "items" to "item" for debugging
 	 	var makeList = document.createElement("ul");
 	 	makeDiv.appendChild(makeList);
 	 	document.body.appendChild(makeDiv);
+	 	$("item").style.display = "block";
 	 	for(var i = 0, j = localStorage.length; i<j; i++){
 		 	var makeLi = document.createElement("li");
 		 	makeList.appendChild(makeLi);
@@ -89,17 +113,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		 	var jsonObject = JSON.parse(value);
 		 	var makeSubList = document.createElement("ul");
 		 	makeLi.appendChild(makeSubList);
-		 	for(var i in jsonObject){
+		 	for(var n in jsonObject){
 			 	var makeSubLi = document.createElement("li");
 			 	makeSubList.appendChild(makeSubLi);
-			 	var dataInfo = jsonObject[i][0]+" "+jsonObject[i][1];
+			 	var dataInfo = jsonObject[n][0]+" "+jsonObject[n][1];
 			 	makeSubLi.innerHTML = dataInfo;
-		 	}
-		 	
-		 	
-	 	}
-	 	
-	 	
+		 	}	
+	 	}	
  	}
 
  	//Variable Defaults
