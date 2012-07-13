@@ -9,7 +9,7 @@
 
 
 
-#viewList, #clearList, #addNew {
+#viewList, #clearList {
 	display: inline;
 }
 
@@ -96,6 +96,7 @@ div#headerDiv{
 div#item {
 	color: #474242;
 	letter-spacing: .05em;
+	text-align: left;
 	
 }
 
