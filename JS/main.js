@@ -1,20 +1,17 @@
-// Activity 2
-// Visual Frameworks (VFW)
-// Mobile Development
-// Full Sail University
-// Jonathan Wade
+	// Activity 2
+	// Visual Frameworks (VFW)
+	// Mobile Development
+	// Full Sail University
+	// Jonathan Wade
+	
+	// Displays Tempo slider value
+	function showValue(newValue) {
+		document.getElementById("range").innerHTML=newValue;
+	}
 
-
- 	// Displays Tempo slider value
-function showValue(newValue)
-    {
-        document.getElementById("range").innerHTML=newValue
-    };
-
-
-//Wait until the DOM has loaded
+    //Wait until the DOM has loaded
 window.addEventListener("DOMContentLoaded", function(){
- 	 	
+	 	
  	//getElementByID Funtion
  	function $(x){
  		var theElement = document.getElementById(x);
@@ -76,17 +73,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		alert("Song Saved!"); 		
  	}
  	
- 	function getData() {
+ 	function getData(){
 	 	//Write data from localStorage to the Browser
 	 	var makeDiv = document.createElement("div");
-	 	makeDiv.setAttribute("id", "items");
+	 	makeDiv.setAttribute("id", "item"); //temp changed "items" to "item" for debugging
 	 	var makeList = document.createElement("ul");
 	 	makeDiv.appendChild(makeList);
 	 	document.body.appendChild(makeDiv);
 	 	for(var i = 0, j = localStorage.length; i<j; i++){
 		 	var makeLi = document.createElement("li");
 		 	makeList.appendChild(makeLi);
-		 	var Key = localStorage.key(i);
+		 	var key = localStorage.key(i);
 		 	var value = localStorage.getItem(key);
 		 	// Here we are converting our localStorage string value back into an object using JSON.parse().
 		 	var jsonObject = JSON.parse(value);
@@ -114,7 +111,7 @@ window.addEventListener("DOMContentLoaded", function(){
  	createGenres();
  	
  	// Set Link & Submit Click Events
- 	var viewList = $('viewList');
+ 	var viewList = $("viewList");
  	viewList.addEventListener("click", getData);
  	/*
 var clearList = $('clearList');
