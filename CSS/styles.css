@@ -59,7 +59,9 @@ nav#addItemNav{
 	padding: 2px;
 }
 
-
+div#item {
+	margin-left: -80px;
+}
 
 label {
 	display: block;

@@ -5,31 +5,28 @@
 	// Jonathan Wade
 	// Displays Tempo slider value
 	
-		
-	function toggleMe(obj, a){
-		var e=document.getElementById(a);
-			if(!e)return true;
-			e.style.display="block"
-			return true;
-	}
- 
-	function toggleMe2(obj, a){
-		var e=document.getElementById(a);
-			if(!e)return true;
-			e.style.display="none"
-			return true;
-	}
- 	
 
+ 	
     //Wait until the DOM has loaded
-window.addEventListener("DOMContentLoaded", function(){
+    window.addEventListener("DOMContentLoaded", function(){
 	 	
- 	function showValue(newValue) {
-		$("range").innerHTML=newValue;
+ 	
+ 	//Displays the value of the Range Slider for Tempo
+ 	function showValue() {
+ 		var newValue = $("tempo").value;
+ 		$("range").innerHTML=newValue;
 	}
 
- 	
- 	
+	//Toggles the date field depending on the "Need to Learn" radio button selection
+	function toggleMe(){
+		$("learnByDate").style.display="block";		
+	}
+	
+ 
+	function toggleMe2(){
+			$("learnByDate").style.display="none";	
+	}
+
  
  	//getElementByID Funtion
  	function $(x){
@@ -55,7 +52,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	//Find Value of selected radio button
 	function getRadioValue(){
-		var radio = document.forms[3].learn;
+		var radio = document.forms[0].learn;
 			for(var i=0; i<radio.length; i++){
 				if(radio[i].checked){
 					learnValue = radio[i].value;
@@ -108,6 +105,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.artist			= ["Artist:", $("artist").value];
 			item.tempo			= ["Tempo:", $("tempo").value];
 			item.needToLearn	= ["Need to learn:", learnValue];
+			item.learnBy		= ["Learn By:", $("learnBy").value];
 			item.sing			= ["Sing:", singValue];
 			item.key			= ["Key:", $("key").value];
 			item.notes			= ["Notes:", $("notes").value];
@@ -172,7 +170,11 @@ window.addEventListener("DOMContentLoaded", function(){
  	clearList.addEventListener("click", clearLocal);
  	var addSong = $("submitButton");
  	addSong.addEventListener("click", storeData);
- 	var showRange = $("range");
+ 	var showRange = $("tempo");
  	showRange.addEventListener("change", showValue);
+ 	var learnByDate = $("yes");
+ 	learnByDate.addEventListener("click", toggleMe);
+ 	var learnByDate2 = $("no");
+ 	learnByDate2.addEventListener("click", toggleMe2);
 
 }); 	

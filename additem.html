@@ -38,9 +38,9 @@
         <h1>Set-Lister</h1>
 	    <div id="headerDiv">    
 	        <nav id="addItemNav">
-	        	<form method="link" action="#" id="viewList" onsubmit="return false"> <input type="submit" value="View Set List"></form>
-	        	<form method="link" action="#" id="clearList"> <input type="submit" value="Clear Set List" ></form> 
-	        	<form method="link" action="additem.html" /> <input type="submit" id="addNew" style="display:none;" value="Add Another Song" ></form> 
+	        	<a href="#" id="viewList">View Set List</a>
+	        	<a href="#" id="clearList">Clear Set List</a>
+	        	<a href="additem.html" id="addNew" style="display:none;">Add Song</a>
 
 	
 	        </nav>
@@ -60,8 +60,8 @@
 	            
 	            <li> 
 		            <label for="learn"><strong>Need to Learn?</strong></label> 
-		            <label> <input type="radio" id="yes" name="learn" value="yes" onclick="return toggleMe(this, 'learnByDate')" /> Yes</label>
-		            <label> <input type="radio" id="no" name="learn" value="no" onclick="return toggleMe2(this, 'learnByDate')"/> No</label>
+		            <label> <input type="radio" id="yes" name="learn" value="yes" /> Yes</label>
+		            <label> <input type="radio" id="no" name="learn" value="no"/> No</label>
 		            <div id="learnByDate" style="display: none; margin-top: 10px;"><!--Do we need to learn this song-->
 		            	<label for="learnBy"><strong>Learn By:</strong></label> <input type="date" id="learnBy" name="learnBy" value="" />
 		            </div>
