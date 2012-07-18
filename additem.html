@@ -1,3 +1,11 @@
+<!--
+    // Activity 2
+	// Visual Frameworks (VFW)
+	// Mobile Development
+	// Full Sail University
+	// Jonathan Wade
+-->
+
 <!doctype html>
     <!--Project: Web App Part 1 :: Jonathan Wade :: 1207-->
 
@@ -50,7 +58,15 @@
 	            	<span id="range">100</span> 
 	            </li> 
 	            
-	            <li> <label for="learn"><strong>Need to Learn?</strong></label> <label> <input type="radio" id="yes" name="learn" value="yes" /> Yes</label> <label> <input type="radio" id="no" name="learn" value="no" /> No</label> </li> <!--Do we need to learn this song-->
+	            <li> 
+		            <label for="learn"><strong>Need to Learn?</strong></label> 
+		            <label> <input type="radio" id="yes" name="learn" value="yes" onclick="return toggleMe(this, 'learnByDate')" /> Yes</label>
+		            <label> <input type="radio" id="no" name="learn" value="no" onclick="return toggleMe2(this, 'learnByDate')"/> No</label>
+		            <div id="learnByDate" style="display: none; margin-top: 10px;"><!--Do we need to learn this song-->
+		            	<label for="learnBy"><strong>Learn By:</strong></label> <input type="date" id="learnBy" name="learnBy" value="" />
+		            </div>
+	            </li>
+	           
 	            <li> <label for="sing"><strong>Sing?</strong></label> <input type="checkbox" name="sing" id="sing" /> </li> <!--Are you singing this song-->
 	           
 	            <li> <!-- Key Signature -->

@@ -3,11 +3,25 @@
 	// Mobile Development
 	// Full Sail University
 	// Jonathan Wade
-	
 	// Displays Tempo slider value
 	function showValue(newValue) {
 		document.getElementById("range").innerHTML=newValue;
 	}
+	
+	function toggleMe(obj, a){
+		var e=document.getElementById(a);
+			if(!e)return true;
+			e.style.display="block"
+			return true;
+	}
+ 
+	function toggleMe2(obj, a){
+		var e=document.getElementById(a);
+			if(!e)return true;
+			e.style.display="none"
+			return true;
+	}
+ 	
 
     //Wait until the DOM has loaded
 window.addEventListener("DOMContentLoaded", function(){
@@ -52,6 +66,8 @@ window.addEventListener("DOMContentLoaded", function(){
 			singValue = "No";
 		}
 	}
+	
+
  	
  	function toggleControls(n) {
 	 	switch(n){

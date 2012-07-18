@@ -1,10 +1,9 @@
 /*
-
- Place assignment and class info here:
- Title:
- By:
- For:
- 
+    // Activity 2
+	// Visual Frameworks (VFW)
+	// Mobile Development
+	// Full Sail University
+	// Jonathan Wade
 */
 
 
@@ -107,7 +106,7 @@ span#range {
 	color: #474242;
 	}
 
-input[type=text] {
+input[type=text], input[type=date] {
 	border-radius: 10px;
 }
 
