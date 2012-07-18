@@ -4,10 +4,8 @@
 	// Full Sail University
 	// Jonathan Wade
 	// Displays Tempo slider value
-	function showValue(newValue) {
-		document.getElementById("range").innerHTML=newValue;
-	}
 	
+		
 	function toggleMe(obj, a){
 		var e=document.getElementById(a);
 			if(!e)return true;
@@ -26,6 +24,13 @@
     //Wait until the DOM has loaded
 window.addEventListener("DOMContentLoaded", function(){
 	 	
+ 	function showValue(newValue) {
+		$("range").innerHTML=newValue;
+	}
+
+ 	
+ 	
+ 
  	//getElementByID Funtion
  	function $(x){
  		var theElement = document.getElementById(x);
@@ -167,5 +172,7 @@ window.addEventListener("DOMContentLoaded", function(){
  	clearList.addEventListener("click", clearLocal);
  	var addSong = $("submitButton");
  	addSong.addEventListener("click", storeData);
+ 	var showRange = $("range");
+ 	showRange.addEventListener("change", showValue);
 
 }); 	
