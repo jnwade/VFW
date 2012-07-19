@@ -1,5 +1,5 @@
 <!--
-    // Activity 2
+    // Activity 3
 	// Visual Frameworks (VFW)
 	// Mobile Development
 	// Full Sail University
@@ -39,17 +39,18 @@
 	    <div id="headerDiv">    
 	        <nav id="addItemNav">
 	        	<a href="#" id="viewList">View Set List</a>
-	        	<a href="#" id="clearList">Clear Set List</a>
 	        	<a href="additem.html" id="addNew" style="display:none;">Add Song</a>
+	        	<a href="#" id="clearList">Clear Set List</a>
+	        	
 
 	
 	        </nav>
 	    </div>
-        <form action="#" method="post" id="mainForm">
+        <form action="#" method="post" id="mainForm" >
 	        <legend><strong>Add a Song</strong></legend>
 	     	<ul>
 	     		<li id="select"><label for="genre"><strong>Genre:</strong></label></li><!--Genre drop down selector-->
-	            <li> <label for="title"><strong>Song Title:</strong></label> <input type="text" name="title" id="title" value="" /> </li>  <!--Song Name Input-->                     
+	            <li> <label for="songName"><strong>Song Title:</strong></label> <input type="text" name="title" id="songName" value="" /> </li>  <!--Song Name Input-->                     
 	            <li> <label for="artist"><strong>Artist:</strong></label> <input type="text" name="artist" id="artist" value="" /> </li>  <!--Artist Name Input-->
 	            
 	            <li> <!--Tempo Slider-->
@@ -73,17 +74,10 @@
 	            	<label for="key"><strong>Key:</strong></label> 
 	            	<input type="text" list="keys" name="key" id="key" value="" /> 
 	                	<datalist id="keys">
-						  <option value="A">
 						  <option value="Bb">
-						  <option value="B">
-						  <option value="C">
 						  <option value="C#">
-						  <option value="D">
 						  <option value="Eb">
-						  <option value="E">
-						  <option value="F">
 						  <option value="F#">
-						  <option value="G">
 						  <option value="G#">
 						</datalist>
 	            </li> <!--Tempo Input-->

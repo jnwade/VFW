@@ -1,10 +1,12 @@
-	// Activity 2
+	// Activity 3
 	// Visual Frameworks (VFW)
 	// Mobile Development
 	// Full Sail University
 	// Jonathan Wade
 	// Displays Tempo slider value
 	
+
+   
 
  	
     //Wait until the DOM has loaded
@@ -27,8 +29,20 @@
 			$("learnByDate").style.display="none";	
 	}
 
- 
- 	//getElementByID Funtion
+		//Form validation for "Song Title" field
+	function validateForm(){
+		var songName = $("songName").value;
+        	if (songName == ""){
+                alert ( "Please define a song title." );        
+        }else{
+	        return storeData();
+        }
+        	
+        	
+    }
+	
+  
+ 	//getElementByID Function
  	function $(x){
  		var theElement = document.getElementById(x);
  		return theElement;
@@ -70,7 +84,7 @@
 	}
 	
 
- 	
+ 	//Toggles between data input mode and data view mode
  	function toggleControls(n) {
 	 	switch(n){
 		 	case "on":
@@ -92,7 +106,7 @@
 	 	}
  	}
  	
- 	
+ 	//Stores form data into Local Storage
 	function storeData(){
 		var id 					= Math.floor(Math.random()*1000001);
 		// Gather up all of our form field values and store them in an object.
@@ -101,7 +115,7 @@
 		getCheckValue();
 		var item 				= {};
 			item.genres			= ["Genre:", $("genres").value];
-			item.title			= ["Title:", $("title").value];
+			item.songName		= ["Title:", $("songName").value];
 			item.artist			= ["Artist:", $("artist").value];
 			item.tempo			= ["Tempo:", $("tempo").value];
 			item.needToLearn	= ["Need to learn:", learnValue];
@@ -114,6 +128,9 @@
 		alert("Song Saved!"); 		
  	}
  	
+ 	
+ 	
+ 	//Retreives data from local storage
  	function getData(){
  		toggleControls("on");
  		if(localStorage.length === 0) {
@@ -128,6 +145,7 @@
 	 	$("item").style.display = "block";
 	 	for(var i = 0, j = localStorage.length; i<j; i++){
 		 	var makeLi = document.createElement("li");
+		 	var linksLi = document.createElement('li');
 		 	makeList.appendChild(makeLi);
 		 	var key = localStorage.key(i);
 		 	var value = localStorage.getItem(key);
@@ -140,10 +158,70 @@
 			 	makeSubList.appendChild(makeSubLi);
 			 	var dataInfo = jsonObject[n][0]+" "+jsonObject[n][1];
 			 	makeSubLi.innerHTML = dataInfo;
-		 	}	
+			 	makeSubList.appendChild(linksLi);
+		 	}
+		 	//Creates edit and delete links for each item submitted to local storage
+		 	makeItemLinks(localStorage.key(i), linksLi); 	
 	 	}	
  	}
+ 	//Make Item Links
+ 	//Creates the edit and delete links for each stored item when displayed
+ 	function makeItemLinks(key, linksLi) {
+ 		//Add edit single item link
+	 	var editLink = document.createElement('a');
+	 	editLink.href = "#";
+	 	editLink.key = key;
+	 	var editText = " Edit Song";
+	 	editLink.addEventListener("click", editItem);
+	 	editLink.innerHTML = editText;
+	 	linksLi.appendChild(editLink);
+	 	
+	 	//Add line break
+	 	var breakTag = document.createElement('br');
+	 	linksLi.appendChild(breakTag);
+	 	
+	 	//Add delete single item link
+	 	var deleteLink = document.createElement('a');
+	 	deleteLink.href = "#";
+	 	deleteLink.key = key;
+	 	var deleteText = "Delete Song";
+	 	/* deleteLink.addEventListener("click", deleteItem); */
+	 	deleteLink.innerHTML = deleteText;
+	 	linksLi.appendChild(deleteLink);
+ 	}
  	
+ 	function editItem() {
+		//Grab the data for our items in Local Storage
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		//Show Form Field
+		toggleControls("off");
+		
+		//Populate the form fields with current localStorage values.
+		$("genres").value = item.genres[1];
+		$("songName").value = item.songName[1];
+		$("artist").value = item.artist[1];
+		$("tempo").value = item.tempo[1];
+		//For Radio buttons
+		var radio = document.forms[0].learn;
+		for(var i = 0; i< radio.length; i++){
+			if(radio[i].value == "yes" && item.needToLearn[1] == "yes") {
+				radio[i].setAttribute("checked", "checked");
+			}else if(radio[i].value == "no" && item.needToLearn[1] == "no") {
+				radio[i].setAttribute("checked", "checked");
+			}
+		}
+		$("learnBy").value = item.learnBy[1];
+		//For Check Box
+		if(item.sing[1] == "on") {
+			$("sing").setAttribute("checked", "checked");
+		}
+		$("key").value = item.key[1];
+		$("notes").value = item.notes[1];
+ 	}
+ 	
+ 	//Clears local storage
  	function clearLocal() {
  		if(localStorage.length === 0) {
 	 		alert("There is nothing to clear!")
@@ -169,12 +247,12 @@
  	var clearList = $("clearList");
  	clearList.addEventListener("click", clearLocal);
  	var addSong = $("submitButton");
- 	addSong.addEventListener("click", storeData);
+ 	addSong.addEventListener("click", validateForm);
  	var showRange = $("tempo");
  	showRange.addEventListener("change", showValue);
  	var learnByDate = $("yes");
  	learnByDate.addEventListener("click", toggleMe);
  	var learnByDate2 = $("no");
  	learnByDate2.addEventListener("click", toggleMe2);
-
+ 	
 }); 	
