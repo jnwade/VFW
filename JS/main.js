@@ -29,19 +29,7 @@
 			$("learnByDate").style.display="none";	
 	}
 
-		//Form validation for "Song Title" field
-	function validateForm(){
-		var songName = $("songName").value;
-        	if (songName == ""){
-                alert ( "Please define a song title." );        
-        }else{
-	        return storeData();
-        }
-        	
-        	
-    }
-	
-  
+	  
  	//getElementByID Function
  	function $(x){
  		var theElement = document.getElementById(x);
@@ -107,8 +95,16 @@
  	}
  	
  	//Stores form data into Local Storage
-	function storeData(){
+	function storeData(key){
+	//If there is no key, this means this is a brand new item and we need a new key
+	if(!key){
 		var id 					= Math.floor(Math.random()*1000001);
+	}else{
+		//Set the id to the existing key we're editing so that it will save over the existing data.
+		//This is key is the same key that has been passed along from the editSubmit event handler
+		//to the validate function, and then passed here, into the storeData function.
+		id = key;
+	}
 		// Gather up all of our form field values and store them in an object.
 		//Object properties contain array with the form label and input value which will allow us to label the data.
 		getRadioValue();
@@ -185,7 +181,7 @@
 	 	deleteLink.href = "#";
 	 	deleteLink.key = key;
 	 	var deleteText = "Delete Song";
-	 	/* deleteLink.addEventListener("click", deleteItem); */
+	 	deleteLink.addEventListener("click", deleteItem);
 	 	deleteLink.innerHTML = deleteText;
 	 	linksLi.appendChild(deleteLink);
  	}
@@ -219,7 +215,84 @@
 		}
 		$("key").value = item.key[1];
 		$("notes").value = item.notes[1];
+		
+		//Remove the initial listener form the input 'save contact' button
+		addSong.removeEventListener("click", storeData);
+		//Change submit button value to say edit edit
+		$("submitButton").value = "Edit Song Info";
+		var editSubmit = $("submitButton");
+		//Save the key value established in this function as a property of the editSubmit event
+		//so we can use that value when we save the data we edited.
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
+		
  	}
+ 	
+ 	function deleteItem() {
+	 	var ask = confirm("Delete Song?");
+	 	if(ask) {
+		 	localStorage.removeItem(this.key);
+		 	window.location.reload();
+	 	}else{
+		 	alert("Whew, that was a close one!");
+		 	
+	 	}
+ 	}
+ 	
+ 	//Validate our form fields
+ 	function validate(e){
+ 		//Define the elements we want to check
+ 		var getGenres = $("genres");
+ 		var getSongName = $("songName");
+ 		var getArtist = $("artist");
+ 		
+ 		//Reset error messages
+ 		errMsg.innerHTML = "";
+		getGenres.style.border = "1px solid black";
+		getSongName.style.border = "1px solid black";
+		getArtist.style.border = "1px solid black";
+ 			
+ 		//Get error messages
+ 		var messageErrorArray = [];
+ 		//Genres validation
+ 		if(getGenres.value === "Pick A Genre!") {
+	 		var genreError = "Please select a Genre."
+	 		getGenres.style.border = "1px solid #1e69de";
+	 		messageErrorArray.push(genreError);
+ 		}
+ 		
+ 		//Song Title validation
+ 		if(getSongName.value === ""){
+	 		var songNameError = "Please enter a Song Title.";
+	 		getSongName.style.border = "1px solid #1e69de";
+	 		messageErrorArray.push(songNameError);
+ 		}
+ 		//Artist name validation
+ 		if(getArtist.value === ""){
+	 		var artistNameError = "Please enter the Artists name.";
+	 		getArtist.style.border = "1px solid #1e69de";
+	 		messageErrorArray.push(artistNameError);
+ 		}
+ 		
+ 		//If errors exist, display them on the screen.
+ 		if(messageErrorArray.length >= 1) {
+	 		for(var i = 0, j = messageErrorArray.length; i < j; i++) {
+		 		var txt = document.createElement('li');
+		 		txt.innerHTML = messageErrorArray[i];
+		 		errMsg.appendChild(txt);
+	 		}
+	 		//Stop Default actions
+	 		e.preventDefault();
+	 		return false;
+ 		}else{
+	 		//If all is ok, save the data. Send the key value from the edit data function.
+	 		//This key value was passed through the editSubmit event listener as a property.
+	 		storeData(this.key);
+ 		}
+ 		
+ 		
+ 	}
+ 	
  	
  	//Clears local storage
  	function clearLocal() {
@@ -236,7 +309,8 @@
  	//Variable Defaults
  	var songGenre = ["Pick A Genre!", "Disco", "Funk", "Classic Rock", "80s alt", "Hair Metal", "90s Rock" ],
  		learnValue,
- 		singValue = "No"
+ 		singValue = "No",
+ 		errMsg = $("errors");
  	;
  		
  	createGenres();
@@ -247,7 +321,7 @@
  	var clearList = $("clearList");
  	clearList.addEventListener("click", clearLocal);
  	var addSong = $("submitButton");
- 	addSong.addEventListener("click", validateForm);
+ 	addSong.addEventListener("click", validate);
  	var showRange = $("tempo");
  	showRange.addEventListener("change", showValue);
  	var learnByDate = $("yes");

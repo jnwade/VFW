@@ -68,6 +68,15 @@ legend { /* Add a Song text styling */
 	text-shadow: 1px 1px 1px rgba(65,65,69,0.5);
 }
 
+#requiredMsg{
+	font-size: smaller;
+	padding:10px 0px 0px 45px;
+	margin-bottom: -10px;
+	display: block;
+	color: #474242;
+	letter-spacing: .05em;
+}
+
 ul { /* Removes bullet pints from List Items */
 	list-style-type: none;	
 }

@@ -48,15 +48,17 @@
 	    </div>
         <form action="#" method="post" id="mainForm" >
 	        <legend><strong>Add a Song</strong></legend>
+	     	<span id="requiredMsg">*Required</span>
+	     	<ul id="errors"></ul>
 	     	<ul>
-	     		<li id="select"><label for="genre"><strong>Genre:</strong></label></li><!--Genre drop down selector-->
-	            <li> <label for="songName"><strong>Song Title:</strong></label> <input type="text" name="title" id="songName" value="" /> </li>  <!--Song Name Input-->                     
-	            <li> <label for="artist"><strong>Artist:</strong></label> <input type="text" name="artist" id="artist" value="" /> </li>  <!--Artist Name Input-->
+	     		<li id="select"><label for="genre"><strong>*Genre:</strong></label></li><!--Genre drop down selector-->
+	            <li> <label for="songName"><strong>*Song Title:</strong></label> <input type="text" name="title" id="songName" value="" /> </li>  <!--Song Name Input-->                     
+	            <li> <label for="artist"><strong>*Artist:</strong></label> <input type="text" name="artist" id="artist" value="" /> </li>  <!--Artist Name Input-->
 	            
 	            <li> <!--Tempo Slider-->
 	            	<label for="tempo"><strong>Tempo:</strong></label> 
-	            	<input type="range" min="50" max="200" name="tempo" id="tempo" value="100" /> 
-	            	<span id="range">100</span> 
+	            	<input type="range" min="50" max="200" name="tempo" id="tempo" value="50" /> 
+	            	<span id="range">50</span> 
 	            </li> 
 	            
 	            <li> 
