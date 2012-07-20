@@ -59,6 +59,10 @@ nav#addItemNav{ /* padding for nav element containing header links */
 	display: inline;
 }
 
+#homeButton{
+	padding-left: 100px;
+}
+
 legend { /* Add a Song text styling */
 	color: #1751af;
 	font-family: 'Federant', cursive;
