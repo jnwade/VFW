@@ -81,6 +81,18 @@ legend { /* Add a Song text styling */
 	letter-spacing: .05em;
 }
 
+#errors{
+	/* padding:10px 0px 10px 0px; */
+	box-shadow: inset 1px 2px 1px rgba(0,0,0,0.5);
+	background-color: rgba(255,0,0,0.3);
+	color: white;
+	letter-spacing: .05em;
+	font-weight: bold;
+	
+	
+	
+}
+
 ul { /* Removes bullet pints from List Items */
 	list-style-type: none;	
 }
@@ -115,7 +127,7 @@ input[type=text], input[type=date] { /* text input field styling */
 textarea { /* Notes section styling */
 	border-radius: 10px;
 	border: none;
-	box-shadow: inset 1px 2px 1px rgba(0,0,0,0.55);
+	box-shadow: inset 1px 2px 1px rgba(0,0,0,0.5);
 	padding: 10px; 
 }
 
@@ -124,8 +136,6 @@ textarea { /* Notes section styling */
 	color: #474242;
 	letter-spacing: .05em;
 }
-
-
 
 
 #footerDiv { /* Footer Navigation Styling */

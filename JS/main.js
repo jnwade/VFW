@@ -239,38 +239,58 @@
 	 	}
  	}
  	
+ 	//Retrieves and applies supported box shadow properties depending on Browser. 
+ 	function getsupportedprop(proparray){
+    	var root=document.documentElement //reference root element of document
+    	for (var i=0; i<proparray.length; i++){ //loop through possible properties
+        	if (typeof root.style[proparray[i]]=="string"){ //if the property value is a string (versus undefined)
+            return proparray[i] //return that string
+        }
+    }
+}
+ 	
  	//Validate our form fields
  	function validate(e){
  		//Define the elements we want to check
+ 		
+ 		var boxshadowprop=getsupportedprop(['boxShadow', 'MozBoxShadow', 'WebkitBoxShadow']); //get appropriate CSS3 box-shadow property
  		var getGenres = $("genres");
  		var getSongName = $("songName");
  		var getArtist = $("artist");
  		
  		//Reset error messages
  		errMsg.innerHTML = "";
-		getGenres.style.border = "1px solid black";
-		getSongName.style.border = "1px solid black";
-		getArtist.style.border = "1px solid black";
+		getGenres.style.border = "";
+		getSongName.style.border = "";
+		getArtist.style.border = "";
+		getSongName.style.background = "";
+	 	getArtist.style.background = "";
+	 	getSongName.style[boxshadowprop]="";
+	 	getArtist.style[boxshadowprop]="";
  			
  		//Get error messages
  		var messageErrorArray = [];
  		//Genres validation
  		if(getGenres.value === "Pick A Genre!") {
 	 		var genreError = "Please select a Genre."
-	 		getGenres.style.border = "1px solid #1e69de";
+	 		getGenres.style.border = "5px solid rgba(255,0,0,0.5)";
 	 		messageErrorArray.push(genreError);
  		}
  		
  		//Song Title validation
  		if(getSongName.value === ""){
 	 		var songNameError = "Please enter a Song Title.";
-	 		getSongName.style.border = "1px solid #1e69de";
+	 		getSongName.style.border = "5px solid white";
+	 		getSongName.style.background = "rgba(255,0,0,0.3)";
+	 		getSongName.style[boxshadowprop]="inset 1px 2px 3px rgba(0,0,0,0.55)" ;//set CSS shadow for "mydiv"
 	 		messageErrorArray.push(songNameError);
  		}
  		//Artist name validation
  		if(getArtist.value === ""){
 	 		var artistNameError = "Please enter the Artists name.";
-	 		getArtist.style.border = "1px solid #1e69de";
+	 		getArtist.style.border = "5px solid white";
+	 		getArtist.style.background = "rgba(255,0,0,0.3)";
+	 		getArtist.style[boxshadowprop]="inset 1px 2px 3px rgba(0,0,0,0.55)"
 	 		messageErrorArray.push(artistNameError);
  		}
  		
