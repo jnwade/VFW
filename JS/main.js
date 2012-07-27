@@ -199,16 +199,20 @@
 		$("songName").value = item.songName[1];
 		$("artist").value = item.artist[1];
 		$("tempo").value = item.tempo[1];
+		
 		//For Radio buttons
 		var radio = document.forms[0].learn;
 		for(var i = 0; i< radio.length; i++){
 			if(radio[i].value == "yes" && item.needToLearn[1] == "yes") {
 				radio[i].setAttribute("checked", "checked");
+				toggleMe();
+				$("learnBy").value = item.learnBy[1];
 			}else if(radio[i].value == "no" && item.needToLearn[1] == "no") {
 				radio[i].setAttribute("checked", "checked");
+				toggleMe2();
 			}
 		}
-		$("learnBy").value = item.learnBy[1];
+		
 		//For Check Box
 		if(item.sing[1] == "on") {
 			$("sing").setAttribute("checked", "checked");
@@ -271,25 +275,25 @@
  		//Get error messages
  		var messageErrorArray = [];
  		//Genres validation
- 		if(getGenres.value === "Pick A Genre!") {
+ 		if(getGenres.value === "*Pick A Genre!") {
 	 		var genreError = "Please select a Genre."
-	 		getGenres.style.border = "5px solid rgba(255,0,0,0.5)";
+	 		getGenres.style.border = "2px solid rgba(255,0,0,0.2)";
 	 		messageErrorArray.push(genreError);
  		}
  		
  		//Song Title validation
  		if(getSongName.value === ""){
 	 		var songNameError = "Please enter a Song Title.";
-	 		getSongName.style.border = "5px solid white";
-	 		getSongName.style.background = "rgba(255,0,0,0.3)";
+	 		getSongName.style.border = "2px solid white";
+	 		getSongName.style.background = "rgba(255,0,0,0.2)";
 	 		getSongName.style[boxshadowprop]="inset 1px 2px 3px rgba(0,0,0,0.55)" ;//set CSS shadow for "mydiv"
 	 		messageErrorArray.push(songNameError);
  		}
  		//Artist name validation
  		if(getArtist.value === ""){
 	 		var artistNameError = "Please enter the Artists name.";
-	 		getArtist.style.border = "5px solid white";
-	 		getArtist.style.background = "rgba(255,0,0,0.3)";
+	 		getArtist.style.border = "2px solid white";
+	 		getArtist.style.background = "rgba(255,0,0,0.2)";
 	 		getArtist.style[boxshadowprop]="inset 1px 2px 3px rgba(0,0,0,0.55)"
 	 		messageErrorArray.push(artistNameError);
  		}
@@ -327,7 +331,7 @@
  	 }
 
  	//Variable Defaults
- 	var songGenre = ["Pick A Genre!", "Disco", "Funk", "Classic Rock", "80s alt", "Hair Metal", "90s Rock" ],
+ 	var songGenre = ["*Pick A Genre!", "Disco", "Funk", "Classic Rock", "80s alt", "Hair Metal", "90s Rock" ],
  		learnValue,
  		singValue = "No",
  		errMsg = $("errors");

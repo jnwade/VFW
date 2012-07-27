@@ -42,9 +42,6 @@
 	        	<a href="additem.html" id="addNew" style="display:none;">Add Song</a>
 	        	<a href="#" id="clearList">Clear Set List</a>
 	        	<a href="index.html" id="homeButton">Home</a>
-	        	
-
-	
 	        </nav>
 	    </div>
         <form action="#" method="post" id="mainForm" >
@@ -52,30 +49,16 @@
 	     	<span id="requiredMsg">*Required</span>
 	     	<ul id="errors"></ul>
 	     	<ul>
-	     		<li id="select"><label for="genre"><strong>*Genre:</strong></label></li><!--Genre drop down selector-->
-	            <li> <label for="songName"><strong>*Song Title:</strong></label> <input type="text" name="title" id="songName" value="" /> </li>  <!--Song Name Input-->                     
-	            <li> <label for="artist"><strong>*Artist:</strong></label> <input type="text" name="artist" id="artist" value="" /> </li>  <!--Artist Name Input-->
+	     		<li id="select"></li><!--Genre drop down selector-->
+	            <li> <input type="text" name="title" id="songName" value="" placeholder="*Song Title"/> </li>  <!--Song Name Input-->                     
+	            <li> <input type="text" name="artist" id="artist" value="" placeholder="*Artist Name"/> </li>  <!--Artist Name Input-->
 	            
-	            <li> <!--Tempo Slider-->
+	            <li id="tempKey"> <!--Tempo Slider-->
 	            	<label for="tempo"><strong>Tempo:</strong></label> 
 	            	<input type="range" min="50" max="200" name="tempo" id="tempo" value="50" /> 
-	            	<span id="range">50</span> 
-	            </li> 
-	            
-	            <li> 
-		            <label for="learn"><strong>Need to Learn?</strong></label> 
-		            <label> <input type="radio" id="yes" name="learn" value="yes" /> Yes</label>
-		            <label> <input type="radio" id="no" name="learn" value="no"/> No</label>
-		            <div id="learnByDate" style="display: none; margin-top: 10px;"><!--Do we need to learn this song-->
-		            	<label for="learnBy"><strong>Learn By:</strong></label> <input type="date" id="learnBy" name="learnBy" value="" />
-		            </div>
-	            </li>
-	           
-	            <li> <label for="sing"><strong>Sing?</strong></label> <input type="checkbox" name="sing" id="sing" /> </li> <!--Are you singing this song-->
-	           
-	            <li> <!-- Key Signature -->
-	            	<label for="key"><strong>Key:</strong></label> 
-	            	<input type="text" list="keys" name="key" id="key" value="" /> 
+		            <div id="tempoBox"><span id="range">50</span></div>
+	                <!-- Key Signature -->
+	            	<input type="text" list="keys" name="key" id="key" value="" placeholder="Song Key" /> 
 	                	<datalist id="keys">
 						  <option value="Bb">
 						  <option value="C#">
@@ -83,9 +66,22 @@
 						  <option value="F#">
 						  <option value="G#">
 						</datalist>
-	            </li> <!--Tempo Input-->
+	            </li> 
+	            <div id="bulletCheck">
+		            <li> 
+			            <label for="learn" style="color:white;"><strong>Need to Learn?</strong></label> 
+			            <input type="radio" id="yes" name="learn" value="yes"><label for="learn" style="color:white;">Yes</label>
+			            <input type="radio" id="no" name="learn" value="no"><label for="learn" style="color:white;">No</label>
+			            <div id="learnByDate" style="display: none; margin-top: 10px;"><!--Do we need to learn this song-->
+			            	<label for="learnBy" style="color:white;"><strong>Learn By:</strong></label> <input type="date" id="learnBy" name="learnBy" value="" />
+			            </div>
+		            </li>
+		            <li> <label for="sing" style="color:white;"><strong>Sing?</strong></label> <input type="checkbox" name="sing" id="sing" /> </li> <!--Are you singing this song-->
+	            </div>
 	           
-	            <li> <label for="notes"><strong>Notes:</strong></label> <textarea name="notes" id="notes" cols="40" rows="6" ></textarea> </li><!--Special Notes and Reminders-->
+	           <!--Tempo Input-->
+	           
+	            <li> <textarea name="notes" id="notes" cols="40" rows="6" placeholder="Notes"></textarea> </li><!--Special Notes and Reminders-->
 	            <li> <input type="hidden" value="true" /> </li> <!--Hidden Field-->
 	        </ul>
 	            <!--Submission and Reset Buttons-->
