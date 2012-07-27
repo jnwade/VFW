@@ -130,7 +130,8 @@
  	function getData(){
  		toggleControls("on");
  		if(localStorage.length === 0) {
-	 		alert("Nothing has been saved yet!");
+	 		alert("Nothing has been saved yet so default data has been added.");
+	 		autoFillData();
  		}
 	 	//Write data from localStorage to the Browser
 	 	var makeDiv = document.createElement("div");
@@ -149,6 +150,7 @@
 		 	var jsonObject = JSON.parse(value);
 		 	var makeSubList = document.createElement("ul");
 		 	makeLi.appendChild(makeSubList);
+		 	getImage(jsonObject.genre[1], makeSubList);
 		 	for(var n in jsonObject){
 			 	var makeSubLi = document.createElement("li");
 			 	makeSubList.appendChild(makeSubLi);
@@ -160,6 +162,24 @@
 		 	makeItemLinks(localStorage.key(i), linksLi); 	
 	 	}	
  	}
+ 	
+ 	function getImage(genreName, makeSubList) {
+	 	//Get the image for the right catagory that's being displayed.
+	 	var imgLi = document.createElement('li');
+	 	makeSubList.appendChild(imgLi);
+	 	var newImg = document.createElement('img');
+	 	var setSource = newImg.setAttribute("src", "img/"+ genreName + ".png");
+	 	imgLi.appendChild(newImg);
+ 	}
+ 	function autoFillData() {
+	 	//Actual json object data required for this to work is coming from our json.js file which is loaded from our HTML page.
+	 	//Store json object into local storage.
+	 	for(var n in json){
+		 	var id = Math.floor(Math.random()*1000001);
+		 	localStorage.setItem(id, JSON.stringify(json[n]));
+	 	}
+ 	}
+ 	
  	//Make Item Links
  	//Creates the edit and delete links for each stored item when displayed
  	function makeItemLinks(key, linksLi) {
@@ -331,7 +351,7 @@
  	 }
 
  	//Variable Defaults
- 	var songGenre = ["*Pick A Genre!", "Disco", "Funk", "Classic Rock", "80s alt", "Hair Metal", "90s Rock" ],
+ 	var songGenre = ["*Pick A Genre!", "Disco", "Funk", "Classic", "80s", "Hair Metal", "90s Rock" ],
  		learnValue,
  		singValue = "No",
  		errMsg = $("errors");
